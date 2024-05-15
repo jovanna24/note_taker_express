@@ -16,12 +16,6 @@ app.get('/notes', (req, res)=> {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
 }); 
 
-// GET Route for the homepage 
-
-
-// app.get('/assets/css/styles.css', (req, res)=> {
-//     res.sendFile(path.join(__dirname, '/public/assets/css/styles.css'));
-// });
 
 // API Routes 
 app.get('/api/notes', (req, res)=> {
@@ -36,10 +30,12 @@ app.get('/api/notes', (req, res)=> {
     });
 }); 
 
+// GET Route for the homepage 
 app.get('*', (req, res)=> {
     res.sendFile(path.join(__dirname, '/public/index.html'));
 }); 
 
+// POST route for notes page
 app.post('/api/notes', (req, res)=>{
     fs.readFile(path.join(__dirname, '/db/db.json'), 'utf-8', (err, data)=>{
         if (err) {
@@ -62,6 +58,7 @@ app.post('/api/notes', (req, res)=>{
     });
 }); 
 
+// DELETE route for notes page
 app.delete("/api/notes/:id", (req, res)=> {
     fs.readFile(path.join(__dirname, '/db/db.json'), 'utf-8', (err, data)=>{
         if (err) {
